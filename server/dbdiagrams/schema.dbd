@@ -1,0 +1,44 @@
+Table users {
+    id INT PK
+    username VARCHAR
+    email VARCHAR
+    password VARCHAR
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+}
+
+Table words {
+    id INT PK
+    user_id INT [ref: > users.id]
+    word_text VARCHAR
+    meaning_text VARCHAR
+    last_reviewed_at TIMESTAMP
+    next_review_at TIMESTAMP
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+}
+
+Table word_images {
+    id INT PK
+    word_id INT [ref: > words.id]
+    image_url VARCHAR
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+}
+
+Table meaning_images {
+    id INT PK
+    word_id INT [ref: > words.id]
+    image_url VARCHAR
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+}
+
+Table review_settings {
+    id INT PK
+    user_id INT [ref: - users.id]
+    first_review_minutes INT
+    second_review_minutes INT
+    third_review_minutes INT
+    fourth_review_minutes INT
+}
