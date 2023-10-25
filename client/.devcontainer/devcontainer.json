@@ -1,0 +1,19 @@
+{
+  "name": "Client",
+  "dockerComposeFile": "../../compose.yml",
+  "service": "client",
+  "workspaceFolder": "/app",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "PKief.material-icon-theme",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vsliveshare.vsliveshare",
+        "christian-kohler.path-intellisense"
+      ]
+    }
+  }
+}
