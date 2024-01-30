@@ -3,6 +3,8 @@ version: "3.9"
 services:
   db:
     image: postgres
+    ports:
+      - 5432:5432
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
@@ -12,9 +14,10 @@ services:
     build:
       context: ./server/
       dockerfile: Dockerfile
-    command: sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: sh -c "rm -f /jet/server/tmp/pids/server.pid && cd /jet/server && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - ./server:/app
+      - .:/jet
+      - ./server:/jet/server
     stdin_open: true
     tty: true
     ports:
@@ -27,11 +30,12 @@ services:
       context: ./client/
       dockerfile: Dockerfile
     volumes:
-      - ./client:/app
-      - node_modules:/app/node_modules
+      - .:/jet
+      - ./client:/jet/client
+      - node_modules:/jet/client/node_modules
     command: sh -c "yarn && yarn dev"
     ports:
-      - "8000:3000"
+      - 8000:3000
 
 volumes:
   postgres-data:

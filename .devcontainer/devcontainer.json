@@ -1,0 +1,33 @@
+{
+  "name": "Jet Server",
+  "dockerComposeFile": "../compose.yml",
+  "service": "client",
+  // "service": "server",
+  "workspaceFolder": "/jet",
+  "postCreateCommand": "./.devcontainer/setup.sh",
+
+  "customizations": {
+    "vscode": {
+      // for client extensions
+      //
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "PKief.material-icon-theme",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vsliveshare.vsliveshare",
+        "christian-kohler.path-intellisense"
+      ]
+      //
+      // for server extensions
+      //
+      // "extensions": [
+      //   "Shopify.ruby-extensions-pack",
+      //   "streetsidesoftware.code-spell-checker",
+      //   "ms-vsliveshare.vsliveshare",
+      //   "PKief.material-icon-theme",
+      //   "christian-kohler.path-intellisense"
+      // ]
+    }
+  }
+}
